@@ -214,6 +214,9 @@ def gameintro():
 			 if event.type == pygame.QUIT:
 				 gameexit()
 			 if event.type == pygame.KEYDOWN:
+			 	if event.key == pygame.K_BACKSPACE:
+					gameexit()
+					pygame.quit()
 				if event.key == pygame.K_s:
 					load = 1
 					start = False
@@ -595,7 +598,7 @@ def gameloop():
 
 			#pygame.draw.line(gameDisplay,blue,(line2.x1,line2.y1),(line2.x2,line2.y2),2)
 			#pygame.draw.circle(gameDisplay,red,(int(final_point.x),int(final_point.y)),3,0)
-		pygame.draw.line(gameDisplay,line1.color,(line1.x1,line1.y1),(final_point.x,final_point.y),2)
+		# pygame.draw.line(gameDisplay,line1.color,(line1.x1,line1.y1),(final_point.x,final_point.y),2)
 
 		#update location of lines back to orignal
 		for l in lines:
@@ -678,7 +681,7 @@ def load_map(name):
 			ly2 = float(a[4])
 			ln = line(lx1,ly1,lx2,ly2)
 			ln.type = 'light'
-			# ln.hidden = True
+			ln.hidden = True
 
 			if lx2 != lx1:
 				lm = (ly2-ly1)/(lx2-lx1)
@@ -1120,7 +1123,7 @@ def editloop():
 
 		
 # main code
-#pygame.display.toggle_fullscreen()
+pygame.display.toggle_fullscreen()
 gameintro()
 if mode == 'play':
 	gameinit()
